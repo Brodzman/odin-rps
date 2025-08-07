@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function getComputerChoice(){
+    let computerChoice = "";
+    let output = Math.random();
+    if (output < 0.33){
+        return computerChoice = "rock";
+    }
+    else if (output >= 0.33 && output < 0.66) {
+        return computerChoice = "paper";
+    }
+    else{
+        return computerChoice = "scissors";
+    }
+    
+};
+
+function getHumanChoice(){
+    return prompt("rock, paper, scissors!");
+}
+
+function playRound(computer, human){
+    human = human.toLowerCase()
+    if (human === "rock" && computer === "rock"){
+        console.log("Rock vs Rock, draw!");
+    }
+    else if (human === "rock" && computer === "paper"){
+        console.log("Rock vs Paper, computer wins!");
+        return "computer";
+    }
+    else if (human === "rock" && computer === "scissors"){
+        console.log("Rock vs Scissors, you win!");
+        return "human";
+    }
+}
+
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let winner = playRound(getComputerChoice(), getHumanChoice());
+
+    for (i = 0; i < 4; i++){
+        if (winner === "computer"){
+            computerScore++;
+        }
+        else if (winner === "human"){
+            humanScore++;
+        }
+        winner = playRound(getComputerChoice(), getHumanChoice());
+        console.log(`Computer has: ${computerScore}, and player has ${humanScore}`);
+    }
+    if (computerScore > humanScore){
+        console.log("Computer wins!");
+    }
+    else if (humanScore > computerScore){
+        console.log("Human wins!");
+    }
+    else{
+        console.log("Draw!");
+    }
+    
+}
+
+playGame()
+
+  </script>
+
+</body>
+</html>
